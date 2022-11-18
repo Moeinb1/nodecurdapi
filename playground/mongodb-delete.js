@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 // or as an es module:
 // import { MongoClient } from 'mongodb'
 
@@ -21,14 +21,10 @@ async function main() {
     const db = client.db(dbName);
     const collection = db.collection('documents');
 
-    const insertResult = await collection.insertMany([{ name: 'shahin', age: 24, location: 'tehran' }]);
-    console.log('Inserted documents =>', insertResult);
-
-
-
-
-    // the following code examples can be pasted here...
-
+    const deleteData = await collection.deleteMany({
+        _id: ObjectId('63779e1601c60f76449d1618')
+    });// the following code examples can be pasted here...
+    console.log({ deleteData })
     return 'done.';
 }
 
